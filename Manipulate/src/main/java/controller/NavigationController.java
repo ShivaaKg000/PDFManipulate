@@ -96,7 +96,7 @@ public class NavigationController {
 
 		this.currentStage = currentStage;
 		currentStage.setHeight(720);
-        currentStage.setWidth(1280);
+        currentStage.setWidth(920);
 	}
 
 	public Stage getCurrentStage() {

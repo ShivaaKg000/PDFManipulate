@@ -1,13 +1,9 @@
 package view;
 
-import manipulate.Constants;
-
 import java.io.File;
 
 import controller.CopyAcrofieldController;
 import controller.DecryptController;
-import controller.NavigationController;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -20,85 +16,84 @@ import javafx.stage.Stage;
 
 public class MainView  {
 
-	@FXML private Text welcomeText;
 	@FXML private BorderPane mainPane;
+	
+	@FXML private AnchorPane copyAcrofieldAnchorPane;
 	@FXML private AnchorPane decryptAnchorPane;	
-	@FXML private TextField lockedPath;
-	@FXML private TextField unLockedPath;
+	
+	@FXML private Text responseSingleCopy;
+	@FXML private Text welcomeText;
+	
+	@FXML private TextArea logAreaMultipleCopy;
 	@FXML private TextArea logArea;
 	
-	@FXML AnchorPane copyAcrofieldAnchorPane;
-	
-	@FXML TextField mappedPath;
-	@FXML TextField folderPath;
-	@FXML TextField toMapPath;
-	@FXML TextField destPath;
-	
-	@FXML Text responseSingleCopy;
-	@FXML TextArea logAreaMultipleCopy;
-	
-	 public void initialize() {
-		
-	 }
-	 
+	@FXML private TextField lockedPath;
+	@FXML private TextField unLockedPath;
+	@FXML private TextField mappedPath;
+	@FXML private TextField folderPath;
+	@FXML private TextField toMapPath;
+	@FXML private TextField destPath;
+
+	public void initialize() {
+
+	}
 
 	public void chooseSourceFolder() {
-		DirectoryChooser directoryChooser = new DirectoryChooser();
-		Stage stage = (Stage) mainPane.getScene().getWindow();
-		File selectedDirectory = directoryChooser.showDialog(stage);
-		lockedPath.setText(selectedDirectory.getAbsolutePath());
+		lockedPath.setText( chooseDirectory());
 
 	}
 
 	public void chooseDestFolder() {
+		unLockedPath.setText( chooseDirectory());
+	}
+
+	public void chooseFolder() {
+		folderPath.setText( chooseDirectory());
+	}
+
+
+	public void chooseDest() {
+		destPath.setText(chooseDirectory());
+	}
+
+	public void chooseToMap() { 
+		mappedPath.setText(chooseFile()); 
+	}
+
+
+	public void chooseMapped() {
+		mappedPath.setText(chooseFile());
+	}
+
+	public String chooseDirectory() {
 		DirectoryChooser directoryChooser = new DirectoryChooser();
 		Stage stage = (Stage) mainPane.getScene().getWindow();
 		File selectedDirectory = directoryChooser.showDialog(stage);
-		unLockedPath.setText(selectedDirectory.getAbsolutePath());
+		return selectedDirectory.getAbsolutePath();
 	}
-	
+
+	public String chooseFile() {
+		FileChooser fileChooser = new FileChooser();
+		Stage stage = (Stage) mainPane.getScene().getWindow();
+		File selectedFile = fileChooser.showOpenDialog(stage);
+		return selectedFile.getAbsolutePath();
+	}
+
 	public void startDecrypt() {
 		String lockedPathString= lockedPath.getText()+"\\";
 		String unLockedPathString = unLockedPath.getText()+"\\";
 		logArea.appendText(DecryptController.getInstance().decrypt(lockedPathString, unLockedPathString));
 	}
-	
-	public void chooseFolder() {
-		DirectoryChooser directoryChooser = new DirectoryChooser();
-		Stage stage = (Stage) mainPane.getScene().getWindow();
-		File selectedDirectory = directoryChooser.showDialog(stage);
-		folderPath.setText(selectedDirectory.getAbsolutePath());
-	}
-	
-	public void chooseMapped() {
-		FileChooser fileChooser = new FileChooser();
-		Stage stage = (Stage) mainPane.getScene().getWindow();
-		File selectedFile = fileChooser.showOpenDialog(stage);
-		mappedPath.setText(selectedFile.getAbsolutePath());
-	}
-	public void chooseToMap() {
-		FileChooser fileChooser = new FileChooser();
-		Stage stage = (Stage) mainPane.getScene().getWindow();
-		File selectedFile = fileChooser.showOpenDialog(stage);
-		toMapPath.setText(selectedFile.getAbsolutePath());
-	}
-	public void chooseDest() {
-		DirectoryChooser directoryChooser = new DirectoryChooser();
-		Stage stage = (Stage) mainPane.getScene().getWindow();
-		File selectedDirectory = directoryChooser.showDialog(stage);
-		destPath.setText(selectedDirectory.getAbsolutePath());
-	}
-	
 	public void startMultipleCopy() {
 		logAreaMultipleCopy.setText(
-									CopyAcrofieldController.getInstance().MapMultipleDoc(folderPath.getText())
-									);
+				CopyAcrofieldController.getInstance().MapMultipleDoc(folderPath.getText())
+				);
 	}
-	
+
 	public void startSingleCopy() {
 		responseSingleCopy.setText(
-									CopyAcrofieldController.getInstance().MapSingleDoc(toMapPath.getText(), mappedPath.getText(), destPath.getText())
-									);
+				CopyAcrofieldController.getInstance().MapSingleDoc(toMapPath.getText(), mappedPath.getText(), destPath.getText())
+				);
 	}
-	
+
 }
