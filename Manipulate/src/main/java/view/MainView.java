@@ -35,7 +35,7 @@ public class MainView  {
 	@FXML private TextField destPath;
 
 	public void initialize() {
-
+			//prova commit
 	}
 
 	public void chooseSourceFolder() {
