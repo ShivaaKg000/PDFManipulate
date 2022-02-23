@@ -14,12 +14,13 @@ public final class Constants  {
 	
     /*View fxml resource path from navigation controller*/
 
+	public static final String  GUIDA_VIEW = "/fxml/Guida.fxml"; 
     public static final String  MAIN_VIEW= "/fxml/MainView.fxml";
-    public static final String  DECRYPT_VIEW= "/fxml/DecryptView.fxml";
-    public static final String  COPY_ACROFIELD_VIEW = "/fxml/CopyAcrofieldView.fxml";
 	public static final String  FILE_ERROR_LOG_NAME = "errorLog.txt";
 	public static final String  ERRORE_TEMPLATE_NON_TROVATO = "Template non trovato!";
-	public static final String  ERRORE_ROOT_NON_TROVATA = "Cartella d'origine non trovata, selezionare una folder corretta"; 
+	public static final String  ERRORE_ROOT_NON_TROVATA = "Cartella d'origine non trovata, selezionare una folder corretta";
+
+	
 
 
     private Constants(){

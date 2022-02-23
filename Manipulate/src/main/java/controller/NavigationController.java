@@ -11,7 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class NavigationController {
 	
@@ -49,23 +48,22 @@ public class NavigationController {
         
     }
 	
-	public void createNewView(String newViewFxml)//da sistemare
+	public void createNewView(String newViewFxml)
     {		
-		Scene previousScene=currentStage.getScene();
-		previousSceneStack.addLast(previousScene);
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource(newViewFxml));
-		Parent view;
-		try {
-			view = loader.load();
-			Scene viewscene = new Scene(view);
-			currentStage.setScene(viewscene);
-			currentStage.show();
+		Image icon = new Image("img/guida-icon.jpg");
+		 try {
+		        FXMLLoader fxmlLoader = new FXMLLoader();
+		        fxmlLoader.setLocation(getClass().getResource(newViewFxml));
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		        Scene scene = new Scene(fxmlLoader.load());
+		        Stage stage = new Stage();
+		        stage.setTitle("Guida");
+		        stage.setScene(scene);
+		        stage.getIcons().add(icon);
+		        stage.show();
+		    } catch (IOException e) {
+		    	e.printStackTrace();
+		    }
     }
 	
 	public void navigateToView(String newViewFxml)

@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import manipulate.Constants;
 
 public class MainView  {
 
@@ -114,5 +115,8 @@ public class MainView  {
 		NavigationController.getInstance().closeApp();
 	}
 
+	public void guida() {
+		NavigationController.getInstance().createNewView(Constants.GUIDA_VIEW);
+	}
 	
 }
