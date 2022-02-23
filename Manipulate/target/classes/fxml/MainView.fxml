@@ -10,14 +10,17 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainView">
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainView">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
+      <MenuBar style="-fx-background-color: #ABCDEF;" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -45,14 +48,27 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DECRYPT" />
-                        <TextField fx:id="lockedPath" layoutX="124.0" layoutY="74.0" prefHeight="26.0" prefWidth="458.0" />
-                        <Button layoutX="591.0" layoutY="74.0" mnemonicParsing="false" onAction="#chooseSourceFolder" text="Browse.." />
-                        <Button layoutX="690.0" layoutY="400.0" mnemonicParsing="false" onAction="#startDecrypt" prefHeight="102.0" prefWidth="118.0" text="Start" />
-                        <TextArea fx:id="logArea" layoutX="124.0" layoutY="268.0" prefHeight="246.0" prefWidth="457.0" />
-                        <Label layoutX="124.0" layoutY="48.0" text="SOURCE" />
-                        <TextField fx:id="unLockedPath" layoutX="124.0" layoutY="122.0" prefHeight="26.0" prefWidth="458.0" />
-                        <Button layoutX="591.0" layoutY="122.0" mnemonicParsing="false" onAction="#chooseDestFolder" text="Browse.." />
-                        <Label layoutX="124.0" layoutY="104.0" text="DEST" />
+                        <TextField fx:id="lockedPath" layoutX="39.0" layoutY="199.0" prefHeight="26.0" prefWidth="650.0" />
+                        <Button layoutX="707.0" layoutY="199.0" mnemonicParsing="false" onAction="#chooseSourceFolder" text="Browse.." />
+                        <Button alignment="CENTER_RIGHT" layoutX="707.0" layoutY="461.0" mnemonicParsing="false" onAction="#startDecrypt" prefHeight="82.0" prefWidth="136.0" text="Sblocca">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Button>
+                        <TextArea fx:id="logArea" layoutX="40.0" layoutY="300.0" prefHeight="246.0" prefWidth="457.0" />
+                        <Label layoutX="39.0" layoutY="181.0" text="Seleziona folder d'origine" />
+                        <TextField fx:id="unLockedPath" layoutX="39.0" layoutY="244.0" prefHeight="26.0" prefWidth="650.0" />
+                        <Button layoutX="707.0" layoutY="244.0" mnemonicParsing="false" onAction="#chooseDestFolder" text="Browse.." />
+                        <Label layoutX="40.0" layoutY="226.0" text="Seleziona folder di destinazione" />
+                        <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="722.0" layoutY="476.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/img/unlock-icon-start.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="323.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/img/pdf-unlocker1.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
             </content>
@@ -61,33 +77,58 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <SplitPane dividerPositions="0.5" layoutY="1.0" orientation="VERTICAL" prefHeight="597.0" prefWidth="862.0">
+                        <SplitPane dividerPositions="0.5006648936170212" layoutX="7.0" layoutY="1.0" orientation="VERTICAL" prefHeight="603.0" prefWidth="855.0">
                            <items>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="209.0" prefWidth="611.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="881.0">
                                  <children>
-                                    <TextField fx:id="folderPath" layoutX="62.0" layoutY="69.0" prefHeight="26.0" prefWidth="550.0" />
-                                    <Button layoutX="741.0" layoutY="70.0" mnemonicParsing="false" onAction="#chooseFolder" text="Browse.." />
-                                    <Button layoutX="741.0" layoutY="198.0" mnemonicParsing="false" onAction="#startMultipleCopy" prefHeight="75.0" prefWidth="98.0" text="Start" />
-                                    <Text layoutX="287.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copy Acrofield in folder structure" />
-                                    <Label layoutX="14.0" layoutY="74.0" text="Folder" />
-                                    <Text layoutX="62.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INFO: FAI LA CARTELLA BENE " />
-                                    <TextArea fx:id="logAreaMultipleCopy" layoutX="62.0" layoutY="165.0" prefHeight="116.0" prefWidth="550.0" />
+                                    <TextField fx:id="folderPath" layoutX="26.0" layoutY="98.0" prefHeight="26.0" prefWidth="650.0" />
+                                    <Button layoutX="698.0" layoutY="98.0" mnemonicParsing="false" onAction="#chooseFolder" text="Browse.." />
+                                    <Button alignment="CENTER_RIGHT" layoutX="698.0" layoutY="204.0" mnemonicParsing="false" onAction="#startMultipleCopy" prefHeight="75.0" prefWidth="140.0" text="Start">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font></Button>
+                                    <Text layoutX="299.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copia Acrofields con struttura multipla" textAlignment="CENTER" AnchorPane.leftAnchor="299.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font></Text>
+                                    <Label layoutX="26.0" layoutY="81.0" text="Seleziona folder origine" />
+                                    <Text fill="#ff1e00" layoutX="26.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE : La struttura della directory scelta deve seguire la formattazione indicata nella guida (Help-&gt;Guida)" wrappingWidth="549.4922180175781">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font></Text>
+                                    <TextArea fx:id="logAreaMultipleCopy" layoutX="26.0" layoutY="164.0" prefHeight="116.0" prefWidth="550.0" />
+                                    <ImageView fitHeight="50.0" fitWidth="55.0" layoutX="715.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/img/copy-document-start.png" />
+                                       </image>
+                                    </ImageView>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="262.0" prefWidth="861.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="881.0">
                                  <children>
-                                    <TextField fx:id="mappedPath" layoutX="86.0" layoutY="42.0" prefHeight="26.0" prefWidth="566.0" />
-                                    <TextField fx:id="toMapPath" layoutX="86.0" layoutY="78.0" prefHeight="26.0" prefWidth="566.0" />
-                                    <Button layoutX="741.0" layoutY="43.0" mnemonicParsing="false" onAction="#chooseMapped" text="Browse.." />
-                                    <Button layoutX="741.0" layoutY="78.0" mnemonicParsing="false" onAction="#chooseToMap" text="Browse.." />
-                                    <Button layoutX="741.0" layoutY="197.0" mnemonicParsing="false" onAction="#startSingleCopy" prefHeight="75.0" prefWidth="98.0" text="Start" />
-                                    <Text layoutX="296.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copy Acrofield on a single file" />
-                                    <Label layoutX="3.0" layoutY="47.0" text="Old Mapped" />
-                                    <Label layoutX="6.0" layoutY="82.0" text="New Empty" />
-                                    <TextField fx:id="destPath" layoutX="86.0" layoutY="147.0" prefHeight="26.0" prefWidth="328.0" />
-                                    <Button layoutX="741.0" layoutY="148.0" mnemonicParsing="false" onAction="#chooseDest" text="Browse.." />
-                                    <Label layoutX="86.0" layoutY="129.0" text="dest" />
-                                    <Text fx:id="responseSingleCopy" layoutX="67.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="633.3367538452148" />
+                                    <TextField fx:id="mappedPath" layoutX="25.0" layoutY="55.0" prefHeight="26.0" prefWidth="650.0" />
+                                    <TextField fx:id="toMapPath" layoutX="25.0" layoutY="100.0" prefHeight="26.0" prefWidth="650.0" />
+                                    <Button layoutX="698.0" layoutY="55.0" mnemonicParsing="false" onAction="#chooseMapped" text="Browse.." />
+                                    <Button layoutX="698.0" layoutY="100.0" mnemonicParsing="false" onAction="#chooseToMap" text="Browse.." />
+                                    <Button alignment="CENTER_RIGHT" layoutX="698.0" layoutY="187.0" mnemonicParsing="false" onAction="#startSingleCopy" prefHeight="75.0" prefWidth="140.0" text="Start">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font></Button>
+                                    <Text layoutX="306.5" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copia Acrofields per singolo file PDF" AnchorPane.leftAnchor="306.5" AnchorPane.rightAnchor="317.884375">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font></Text>
+                                    <Label layoutX="27.0" layoutY="37.0" text="Seleziona file origine" />
+                                    <Label layoutX="27.0" layoutY="82.0" prefHeight="18.0" prefWidth="149.0" text="Seleziona file da mappare" />
+                                    <TextField fx:id="destPath" layoutX="25.0" layoutY="147.0" prefHeight="26.0" prefWidth="650.0" />
+                                    <Button layoutX="698.0" layoutY="147.0" mnemonicParsing="false" onAction="#chooseDest" text="Browse.." />
+                                    <Label layoutX="25.0" layoutY="126.0" text="Seleziona folder di destinazione" />
+                                    <Text fx:id="responseSingleCopy" layoutX="25.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="647.7367782592773" />
+                                    <ImageView fitHeight="49.0" fitWidth="53.0" layoutX="719.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/img/copy-document-start.png" />
+                                       </image>
+                                    </ImageView>
                                  </children>
                               </AnchorPane>
                            </items>
@@ -99,4 +140,11 @@
         </tabs>
       </TabPane>
    </center>
+   <bottom>
+      <HBox prefHeight="18.0" prefWidth="870.0" style="-fx-background-color: #ABCDEF;" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ManipulatePDF® -  Created  by VRM Team 02/2022" textAlignment="RIGHT" wrappingWidth="848.5366022586823" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>
