@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="guidaPane" prefHeight="556.0" prefWidth="651.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="view.GuidaView">
+   <children>
+      <ImageView fitHeight="264.0" fitWidth="313.0" layoutX="176.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="162.0">
+         <image>
+            <Image url="@/img/guida-image-structure.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

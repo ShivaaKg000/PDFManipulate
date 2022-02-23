@@ -4,6 +4,7 @@ import java.io.File;
 
 import controller.CopyAcrofieldController;
 import controller.DecryptController;
+import controller.NavigationController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -56,7 +57,7 @@ public class MainView  {
 	}
 
 	public void chooseToMap() { 
-		mappedPath.setText(chooseFile()); 
+		toMapPath.setText(chooseFile()); 
 	}
 
 
@@ -108,4 +109,10 @@ public class MainView  {
 				);
 	}
 
+	
+	public void close() {
+		NavigationController.getInstance().closeApp();
+	}
+
+	
 }

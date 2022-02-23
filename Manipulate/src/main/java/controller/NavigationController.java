@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -46,6 +47,25 @@ public class NavigationController {
 			e.printStackTrace();
 		}
         
+    }
+	
+	public void createNewView(String newViewFxml)//da sistemare
+    {		
+		Scene previousScene=currentStage.getScene();
+		previousSceneStack.addLast(previousScene);
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource(newViewFxml));
+		Parent view;
+		try {
+			view = loader.load();
+			Scene viewscene = new Scene(view);
+			currentStage.setScene(viewscene);
+			currentStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
     }
 	
 	public void navigateToView(String newViewFxml)
@@ -98,10 +118,14 @@ public class NavigationController {
 		currentStage.setHeight(720);
         currentStage.setWidth(880);
         currentStage.setResizable(false);
+        currentStage.getIcons().add(new Image("img/first_Window_Icon.png"));
+        currentStage.setTitle("ManipulatePDF");
 	}
 
 	public Stage getCurrentStage() {
 		return currentStage;
 	}
-	
+	public void  closeApp() {
+		currentStage.close();
+	}
 }

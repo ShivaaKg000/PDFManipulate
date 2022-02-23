@@ -45,13 +45,13 @@ public class CopyAcrofieldController {
 									try {
 										int ris=MapDoc(file,codiceProdotto,nomeRete+"\\",basePath);
 										if(ris==-1) {
-											log+=printError(codiceProdotto+file.getName(),Constants.ERRORE_TEMPLATE_NON_TROVATO,basePath);
+											log+=LogController.getInstance(basePath).printError(codiceProdotto+file.getName(),Constants.ERRORE_TEMPLATE_NON_TROVATO,basePath);
 										}
 										if(ris==1) {
-											log+=printOK(codiceProdotto+file.getName(),basePath);
+											log+=LogController.getInstance(basePath).printOK(codiceProdotto+file.getName(),basePath);
 										}
 									} catch (Exception e) {
-										log+=printError(file.getName(), e.toString(),basePath);
+										log+=LogController.getInstance(basePath).printError(file.getName(), e.toString(),basePath);
 									}
 								}
 							}
@@ -70,39 +70,7 @@ public class CopyAcrofieldController {
 	}
 
 
-	public static String printError(String fileNameError,String error, String basePath){
-		String log = new String();
-		File errorFile = new File(basePath+"\\"+"log.txt");
-		try {
-			errorFile.createNewFile();
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-			LocalDateTime now = LocalDateTime.now();  
-			FileWriter myWriter = new FileWriter(basePath+"\\"+"log.txt",true);
-			log=dtf.format(now)+" : "+fileNameError+": "+error+"\n";
-			myWriter.append(log);
-			myWriter.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return log;
-	}
-	public static String printOK(String fileName, String basePath){
-		String log = new String();
-		File file = new File(basePath+"\\"+"log.txt");
-		try {
-			file.createNewFile();
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-			LocalDateTime now = LocalDateTime.now();  
-
-			FileWriter myWriter = new FileWriter(basePath+"\\"+"log.txt",true);
-			log=dtf.format(now)+" : "+fileName+"\n";
-			myWriter.append(log);
-			myWriter.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return log;
-	}
+	
 	
 	public int MapDoc(File file,String codiceProdotto,String rete, String basePath) throws Exception  {
 		if(!file.isDirectory()) {
@@ -144,10 +112,10 @@ public class CopyAcrofieldController {
 			String nameFile = toMap.substring(toMap.lastIndexOf("\\"),toMap.length());
 			File toMapFile = new File(toMap);
 			File mappedFile = new File(mapped);
-			if(toMapFile.isFile() && mappedFile.isFile()) {  // Ampliare controlli sui file !!!!
+			if(toMapFile.isFile() && mappedFile.isFile()) {  //controlla se sono file
 				PdfReader pieno = new PdfReader( mapped );
-				PdfReader vuoto = new PdfReader( toMap ); // throws
-				PdfStamper stamper = new PdfStamper( pieno ,  new FileOutputStream(destinazione+nameFile) ); //throws
+				PdfReader vuoto = new PdfReader( toMap ); 
+				PdfStamper stamper = new PdfStamper( pieno ,  new FileOutputStream(destinazione+nameFile) ); 
 
 				for( int i = 1; i <= pieno.getNumberOfPages(); ++i) {
 					stamper.replacePage( vuoto, i, i );
@@ -155,13 +123,16 @@ public class CopyAcrofieldController {
 
 				stamper.close();
 
-				return "DOC MAPPATO";
+				return "Documento "+  nameFile.substring(1,nameFile.length()) +" copiato, controllare il posizionamento degli Acrofields copiati";
 			}
-			else  return"ERRORE TEMPLATE NON TROVATO";
+			else  return" ERRORE - I file selezionati non sono dei documenti PDF";
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 		return"";
 	}
+	
+	
+	
 }

@@ -19,7 +19,7 @@ public final class Constants  {
     public static final String  COPY_ACROFIELD_VIEW = "/fxml/CopyAcrofieldView.fxml";
 	public static final String  FILE_ERROR_LOG_NAME = "errorLog.txt";
 	public static final String  ERRORE_TEMPLATE_NON_TROVATO = "Template non trovato!";
-	public static final String  ERRORE_ROOT_NON_TROVATA = "Root non trovata"; 
+	public static final String  ERRORE_ROOT_NON_TROVATA = "Cartella d'origine non trovata, selezionare una folder corretta"; 
 
 
     private Constants(){
