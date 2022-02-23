@@ -26,6 +26,8 @@ public class CopyAcrofieldController {
 
 
 	public String MapMultipleDoc(String basePath) {
+		
+		//ciao a tutti
 		String log= new String();
 		String codiceProdotto;
 		File folder = new File(basePath);
