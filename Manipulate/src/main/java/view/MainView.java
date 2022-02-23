@@ -35,7 +35,6 @@ public class MainView  {
 	@FXML private TextField destPath;
 
 	public void initialize() {
-		
 	}
 
 	public void chooseSourceFolder() {
@@ -80,9 +79,22 @@ public class MainView  {
 	}
 
 	public void startDecrypt() {
-		String lockedPathString= lockedPath.getText()+"\\";
-		String unLockedPathString = unLockedPath.getText()+"\\";
-		logArea.appendText(DecryptController.getInstance().decrypt(lockedPathString, unLockedPathString));
+		logArea.clear();
+		String lockedPathString		= lockedPath.getText()+"\\";
+		String unLockedPathString 	= unLockedPath.getText()+"\\";
+		Boolean flag2Unlock			= true;
+		
+		if(unLockedPath.getText() == "") {
+			logArea.appendText("Source path is empty, please select a valid path\n");
+			flag2Unlock = false;
+		}
+		if(lockedPath.getText() == "") {
+			logArea.appendText("Destination path is empty, please select a valid path\n");
+			flag2Unlock = false;
+		}
+		if(flag2Unlock == true) {
+			logArea.appendText(DecryptController.getInstance().decrypt(lockedPathString, unLockedPathString));
+		}
 	}
 	public void startMultipleCopy() {
 		logAreaMultipleCopy.setText(
