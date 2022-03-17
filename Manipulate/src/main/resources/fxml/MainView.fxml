@@ -30,7 +30,6 @@
           <Menu mnemonicParsing="false" text="Aiuto">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#guida" text="Guida" />
-                  <MenuItem mnemonicParsing="false" text="Info" />
             </items>
           </Menu>
         </menus>
@@ -44,16 +43,16 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DECRYPT" />
-                        <TextField fx:id="lockedPath" layoutX="39.0" layoutY="199.0" prefHeight="26.0" prefWidth="650.0" />
-                        <Button layoutX="707.0" layoutY="199.0" mnemonicParsing="false" onAction="#chooseSourceFolder" text="Browse.." />
-                        <Button alignment="CENTER_RIGHT" layoutX="707.0" layoutY="461.0" mnemonicParsing="false" onAction="#startDecrypt" prefHeight="82.0" prefWidth="136.0" text="Sblocca">
+                        <TextField fx:id="lockedPath" layoutX="39.0" layoutY="199.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
+                        <Button layoutX="707.0" layoutY="199.0" mnemonicParsing="false" onAction="#chooseSourceFolder" style="-fx-border-color: #ABCDEF;" text="Browse.." />
+                        <Button alignment="CENTER_RIGHT" layoutX="707.0" layoutY="461.0" mnemonicParsing="false" onAction="#startDecrypt" prefHeight="82.0" prefWidth="136.0" style="-fx-border-color: #ABCDEF;" text="Sblocca">
                            <font>
                               <Font size="14.0" />
                            </font></Button>
-                        <TextArea fx:id="logArea" editable="false" layoutX="40.0" layoutY="300.0" prefHeight="246.0" prefWidth="457.0" />
+                        <TextArea fx:id="logArea" editable="false" layoutX="40.0" layoutY="300.0" prefHeight="246.0" prefWidth="457.0" style="-fx-border-color: #ABCDEF;" />
                         <Label layoutX="39.0" layoutY="181.0" text="Seleziona folder d'origine" />
-                        <TextField fx:id="unLockedPath" layoutX="39.0" layoutY="244.0" prefHeight="26.0" prefWidth="650.0" />
-                        <Button layoutX="707.0" layoutY="244.0" mnemonicParsing="false" onAction="#chooseDestFolder" text="Browse.." />
+                        <TextField fx:id="unLockedPath" layoutX="39.0" layoutY="244.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
+                        <Button layoutX="707.0" layoutY="244.0" mnemonicParsing="false" onAction="#chooseDestFolder" style="-fx-border-color: #ABCDEF;" text="Browse.." />
                         <Label layoutX="40.0" layoutY="226.0" text="Seleziona folder di destinazione" />
                         <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="722.0" layoutY="476.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -77,9 +76,9 @@
                            <items>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="881.0">
                                  <children>
-                                    <TextField fx:id="folderPath" layoutX="26.0" layoutY="98.0" prefHeight="26.0" prefWidth="650.0" />
-                                    <Button layoutX="698.0" layoutY="98.0" mnemonicParsing="false" onAction="#chooseFolder" text="Browse.." />
-                                    <Button alignment="CENTER_RIGHT" layoutX="698.0" layoutY="204.0" mnemonicParsing="false" onAction="#startMultipleCopy" prefHeight="75.0" prefWidth="140.0" text="Start">
+                                    <TextField fx:id="folderPath" layoutX="26.0" layoutY="98.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
+                                    <Button layoutX="698.0" layoutY="98.0" mnemonicParsing="false" onAction="#chooseFolder" style="-fx-border-color: #ABCDEF;" text="Browse.." />
+                                    <Button alignment="CENTER_RIGHT" layoutX="698.0" layoutY="204.0" mnemonicParsing="false" onAction="#startMultipleCopy" prefHeight="75.0" prefWidth="140.0" style="-fx-border-color: #ABCDEF;" text="Start">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font></Button>
@@ -92,7 +91,7 @@
                                        <font>
                                           <Font size="10.0" />
                                        </font></Text>
-                                    <TextArea fx:id="logAreaMultipleCopy" editable="false" layoutX="26.0" layoutY="164.0" prefHeight="116.0" prefWidth="550.0" />
+                                    <TextArea fx:id="logAreaMultipleCopy" editable="false" layoutX="26.0" layoutY="164.0" prefHeight="116.0" prefWidth="550.0" style="-fx-border-color: #ABCDEF;" />
                                     <ImageView fitHeight="50.0" fitWidth="55.0" layoutX="715.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@/img/copy-document-start.png" />
@@ -102,11 +101,11 @@
                               </AnchorPane>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="881.0">
                                  <children>
-                                    <TextField fx:id="mappedPath" layoutX="25.0" layoutY="55.0" prefHeight="26.0" prefWidth="650.0" />
-                                    <TextField fx:id="toMapPath" layoutX="25.0" layoutY="100.0" prefHeight="26.0" prefWidth="650.0" />
-                                    <Button layoutX="698.0" layoutY="55.0" mnemonicParsing="false" onAction="#chooseMapped" text="Browse.." />
-                                    <Button layoutX="698.0" layoutY="100.0" mnemonicParsing="false" onAction="#chooseToMap" text="Browse.." />
-                                    <Button alignment="CENTER_RIGHT" layoutX="698.0" layoutY="187.0" mnemonicParsing="false" onAction="#startSingleCopy" prefHeight="75.0" prefWidth="140.0" text="Start">
+                                    <TextField fx:id="mappedPath" layoutX="25.0" layoutY="55.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
+                                    <TextField fx:id="toMapPath" layoutX="25.0" layoutY="100.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
+                                    <Button layoutX="698.0" layoutY="55.0" mnemonicParsing="false" onAction="#chooseMapped" style="-fx-border-color: #ABCDEF;" text="Browse.." />
+                                    <Button layoutX="698.0" layoutY="100.0" mnemonicParsing="false" onAction="#chooseToMap" style="-fx-border-color: #ABCDEF;" text="Browse.." />
+                                    <Button alignment="CENTER_RIGHT" layoutX="698.0" layoutY="187.0" mnemonicParsing="false" onAction="#startSingleCopy" prefHeight="75.0" prefWidth="140.0" style="-fx-border-color: #ABCDEF;" text="Start">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font></Button>
@@ -116,8 +115,8 @@
                                        </font></Text>
                                     <Label layoutX="27.0" layoutY="37.0" text="Seleziona file origine" />
                                     <Label layoutX="27.0" layoutY="82.0" prefHeight="18.0" prefWidth="149.0" text="Seleziona file da mappare" />
-                                    <TextField fx:id="destPath" layoutX="25.0" layoutY="147.0" prefHeight="26.0" prefWidth="650.0" />
-                                    <Button layoutX="698.0" layoutY="147.0" mnemonicParsing="false" onAction="#chooseDest" text="Browse.." />
+                                    <TextField fx:id="destPath" layoutX="25.0" layoutY="147.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
+                                    <Button layoutX="698.0" layoutY="147.0" mnemonicParsing="false" onAction="#chooseDest" style="-fx-border-color: #ABCDEF;" text="Browse.." />
                                     <Label layoutX="25.0" layoutY="126.0" text="Seleziona folder di destinazione" />
                                     <Text fx:id="responseSingleCopy" layoutX="25.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="647.7367782592773" />
                                     <ImageView fitHeight="49.0" fitWidth="53.0" layoutX="719.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">

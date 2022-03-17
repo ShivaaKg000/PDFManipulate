@@ -3,6 +3,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="guidaPane" prefHeight="556.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GuidaView">
@@ -12,7 +13,16 @@
             <Image url="@/img/guida-image-structure.png" />
          </image>
       </ImageView>
-      <Text layoutX="308.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GUIDA" />
-      <Text layoutX="38.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spiegazioneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" />
+      <Text layoutX="308.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GUIDA">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Text>
+      <Text layoutX="22.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Per utilizzare correttamente l'app nella modalità copyAcrofields multipla bisogna strutturare l'alberatura delle cartelle come da esempio seguente :" wrappingWidth="403.7750120162964" />
+      <Text layoutX="47.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nell'esempio abbiamo :" wrappingWidth="132.57499980926514" />
+      <Text layoutX="47.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La folder &quot;F&quot; che rappresenta la rete di vendita" wrappingWidth="336.57499980926514" />
+      <Text layoutX="47.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La folder &quot;KE&quot; che rappresenta il prodotto" wrappingWidth="336.57499980926514" />
+      <Text layoutX="48.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La folder &quot;MAPPED&quot; conterrà i documenti già mappati da cui si vuole fare la copia degli acrofields" wrappingWidth="590.1749448776245" />
+      <Text layoutX="48.0" layoutY="515.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La folder &quot;TO_MAP&quot; conterrà i documenti vuoti su cui fare la copia" wrappingWidth="471.77498149871826" />
+      <Text layoutX="48.0" layoutY="532.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si può ripetere la struttura per le varie reti di vendita (F,S,W)" wrappingWidth="471.77498149871826" />
    </children>
 </AnchorPane>
