@@ -50,10 +50,16 @@
                               <Font size="14.0" />
                            </font></Button>
                         <TextArea fx:id="logArea" editable="false" layoutX="40.0" layoutY="300.0" prefHeight="246.0" prefWidth="457.0" style="-fx-border-color: #ABCDEF;" />
-                        <Label layoutX="39.0" layoutY="181.0" text="Seleziona folder d'origine" />
+                        <Label layoutX="39.0" layoutY="180.0" text="Seleziona folder d'origine">
+                           <font>
+                              <Font size="11.0" />
+                           </font></Label>
                         <TextField fx:id="unLockedPath" layoutX="39.0" layoutY="244.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
                         <Button layoutX="707.0" layoutY="244.0" mnemonicParsing="false" onAction="#chooseDestFolder" style="-fx-border-color: #ABCDEF;" text="Browse.." />
-                        <Label layoutX="40.0" layoutY="226.0" text="Seleziona folder di destinazione" />
+                        <Label layoutX="40.0" layoutY="227.0" text="Seleziona folder di destinazione">
+                           <font>
+                              <Font size="11.0" />
+                           </font></Label>
                         <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="722.0" layoutY="476.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@/img/unlock-icon-start.png" />
@@ -86,7 +92,10 @@
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font></Text>
-                                    <Label layoutX="26.0" layoutY="81.0" text="Seleziona folder origine" />
+                                    <Label layoutX="26.0" layoutY="81.0" text="Seleziona folder origine">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font></Label>
                                     <Text fill="#ff1e00" layoutX="26.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE : La struttura della directory scelta deve seguire la formattazione indicata nella guida (Aiuto-&gt;Guida)" wrappingWidth="549.4922180175781">
                                        <font>
                                           <Font size="10.0" />
@@ -113,11 +122,20 @@
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font></Text>
-                                    <Label layoutX="27.0" layoutY="37.0" text="Seleziona file origine" />
-                                    <Label layoutX="27.0" layoutY="82.0" prefHeight="18.0" prefWidth="149.0" text="Seleziona file da mappare" />
+                                    <Label layoutX="27.0" layoutY="38.0" text="Seleziona file origine">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font></Label>
+                                    <Label layoutX="27.0" layoutY="84.0" prefHeight="18.0" prefWidth="252.0" text="Seleziona file da mappare">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font></Label>
                                     <TextField fx:id="destPath" layoutX="25.0" layoutY="147.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
                                     <Button layoutX="698.0" layoutY="147.0" mnemonicParsing="false" onAction="#chooseDest" style="-fx-border-color: #ABCDEF;" text="Browse.." />
-                                    <Label layoutX="25.0" layoutY="126.0" text="Seleziona folder di destinazione" />
+                                    <Label layoutX="25.0" layoutY="131.0" prefHeight="0.0" prefWidth="215.0" text="Seleziona folder di destinazione">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font></Label>
                                     <Text fx:id="responseSingleCopy" layoutX="25.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="647.7367782592773" />
                                     <ImageView fitHeight="49.0" fitWidth="53.0" layoutX="719.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
