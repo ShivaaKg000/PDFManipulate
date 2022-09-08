@@ -3,7 +3,6 @@ package controller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -27,17 +26,17 @@ public class DecryptController {
 		File folder = new File(lockedPathString);
 
 		if(!folder.isDirectory()) {
-			return "Source path is not a folder!";
+			return Constants.ERRORE_ROOT_ORIGINE_NON_TROVATA;
 		}
 		if(!desFolder.isDirectory()) {
-			return "Destination path is not a folder!";
+			return Constants.ERRORE_ROOT_DESTINAZIONE_NON_TROVATA;
 		}
 		
 		if(folder.getAbsolutePath().equalsIgnoreCase(desFolder.getAbsolutePath().trim())) {
-			return "Source and destination paths folders are the same!!! Select a different folder";
+			return Constants.ERRORE_SAME_FOLDER;
 		}
 		
-		logArea= ("Starting unlock process on "+ lockedPathString+" ...\n\n"); 
+		logArea= ("Starting unlock process su "+ lockedPathString+" ...\n\n"); 
 		File[] folderList = folder.listFiles();
 		if(folderList.length > 0) { 
 			for (File lockedFile : folderList) {
@@ -48,12 +47,12 @@ public class DecryptController {
 					logArea+=(lockedFile.getName()+" unlocked! \n");
 				} catch (Exception e) {
 					LogController.getInstance(unLockedPathString+Constants.FILE_ERROR_LOG_NAME).printError("Unlock "+lockedFile.getName()+" KO!\n"+ e.toString() );
-					logArea+=("Unlock "+lockedFile.getName()+" KO! For more details read errorLog.txt on unlocked folder.\n");
+					logArea+=("Unlock "+lockedFile.getName()+Constants.ERRORE_DECRYPT);
 				}
 			}
-			logArea+=("\n\nDecrypting ended!");
+			logArea+=Constants.END_DECRYPT;
 		}else {
-			logArea+=("The source folder is empty");
+			logArea+=Constants.ERRORE_ROOT_ORIGINE_VUOTA;
 		}
 		return logArea;
 	}

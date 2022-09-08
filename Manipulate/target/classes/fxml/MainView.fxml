@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -18,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainPane" maxHeight="660.0" maxWidth="870.0" minHeight="660.0" minWidth="870.0" prefHeight="660.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainView">
+<BorderPane fx:id="mainPane" maxHeight="660.0" maxWidth="870.0" minHeight="660.0" minWidth="870.0" prefHeight="660.0" prefWidth="870.0" snapToPixel="false" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainView">
    <top>
       <MenuBar style="-fx-background-color: #ABCDEF;" BorderPane.alignment="CENTER">
         <menus>
@@ -44,7 +45,7 @@
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DECRYPT" />
                         <TextField fx:id="lockedPath" layoutX="39.0" layoutY="199.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
-                        <Button layoutX="707.0" layoutY="199.0" mnemonicParsing="false" onAction="#chooseSourceFolder" style="-fx-border-color: #ABCDEF;" text="Browse.." />
+                        <Button layoutX="707.0" layoutY="199.0" mnemonicParsing="false" onAction="#chooseSourceFolder" style="-fx-border-color: #ABCDEF;" text="Sfoglia.." />
                         <Button alignment="CENTER_RIGHT" layoutX="707.0" layoutY="461.0" mnemonicParsing="false" onAction="#startDecrypt" prefHeight="82.0" prefWidth="136.0" style="-fx-border-color: #ABCDEF;" text="Sblocca">
                            <font>
                               <Font size="14.0" />
@@ -55,12 +56,12 @@
                               <Font size="11.0" />
                            </font></Label>
                         <TextField fx:id="unLockedPath" layoutX="39.0" layoutY="244.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
-                        <Button layoutX="707.0" layoutY="244.0" mnemonicParsing="false" onAction="#chooseDestFolder" style="-fx-border-color: #ABCDEF;" text="Browse.." />
+                        <Button layoutX="707.0" layoutY="244.0" mnemonicParsing="false" onAction="#chooseDestFolder" style="-fx-border-color: #ABCDEF;" text="Sfoglia.." />
                         <Label layoutX="40.0" layoutY="227.0" text="Seleziona folder di destinazione">
                            <font>
                               <Font size="11.0" />
                            </font></Label>
-                        <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="722.0" layoutY="476.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="722.0" layoutY="476.0" onMouseClicked="#startDecrypt" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@/img/unlock-icon-start.png" />
                            </image>
@@ -83,7 +84,7 @@
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="881.0">
                                  <children>
                                     <TextField fx:id="folderPath" layoutX="26.0" layoutY="98.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
-                                    <Button layoutX="698.0" layoutY="98.0" mnemonicParsing="false" onAction="#chooseFolder" style="-fx-border-color: #ABCDEF;" text="Browse.." />
+                                    <Button layoutX="698.0" layoutY="98.0" mnemonicParsing="false" onAction="#chooseFolder" style="-fx-border-color: #ABCDEF;" text="Sfoglia.." />
                                     <Button alignment="CENTER_RIGHT" layoutX="698.0" layoutY="204.0" mnemonicParsing="false" onAction="#startMultipleCopy" prefHeight="75.0" prefWidth="140.0" style="-fx-border-color: #ABCDEF;" text="Start">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
@@ -101,7 +102,7 @@
                                           <Font size="10.0" />
                                        </font></Text>
                                     <TextArea fx:id="logAreaMultipleCopy" editable="false" layoutX="26.0" layoutY="164.0" prefHeight="116.0" prefWidth="550.0" style="-fx-border-color: #ABCDEF;" />
-                                    <ImageView fitHeight="50.0" fitWidth="55.0" layoutX="715.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="50.0" fitWidth="55.0" layoutX="715.0" layoutY="218.0" onMouseClicked="#startMultipleCopy" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@/img/copy-document-start.png" />
                                        </image>
@@ -112,8 +113,8 @@
                                  <children>
                                     <TextField fx:id="mappedPath" layoutX="25.0" layoutY="55.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
                                     <TextField fx:id="toMapPath" layoutX="25.0" layoutY="100.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
-                                    <Button layoutX="698.0" layoutY="55.0" mnemonicParsing="false" onAction="#chooseMapped" style="-fx-border-color: #ABCDEF;" text="Browse.." />
-                                    <Button layoutX="698.0" layoutY="100.0" mnemonicParsing="false" onAction="#chooseToMap" style="-fx-border-color: #ABCDEF;" text="Browse.." />
+                                    <Button layoutX="698.0" layoutY="55.0" mnemonicParsing="false" onAction="#chooseMapped" style="-fx-border-color: #ABCDEF;" text="Sfoglia.." />
+                                    <Button layoutX="698.0" layoutY="100.0" mnemonicParsing="false" onAction="#chooseToMap" style="-fx-border-color: #ABCDEF;" text="Sfoglia.." />
                                     <Button alignment="CENTER_RIGHT" layoutX="698.0" layoutY="187.0" mnemonicParsing="false" onAction="#startSingleCopy" prefHeight="75.0" prefWidth="140.0" style="-fx-border-color: #ABCDEF;" text="Start">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
@@ -130,14 +131,15 @@
                                        <font>
                                           <Font size="11.0" />
                                        </font></Label>
+                                    <CheckBox fx:id="enableLogoDisclaimerSingle" layoutX="696.0" layoutY="22.0" mnemonicParsing="false" text="Inserisci Logo/Disclaimer" />
                                     <TextField fx:id="destPath" layoutX="25.0" layoutY="147.0" prefHeight="26.0" prefWidth="650.0" style="-fx-border-color: #ABCDEF;" />
-                                    <Button layoutX="698.0" layoutY="147.0" mnemonicParsing="false" onAction="#chooseDest" style="-fx-border-color: #ABCDEF;" text="Browse.." />
+                                    <Button layoutX="698.0" layoutY="147.0" mnemonicParsing="false" onAction="#chooseDest" style="-fx-border-color: #ABCDEF;" text="Sfoglia.." />
                                     <Label layoutX="25.0" layoutY="131.0" prefHeight="0.0" prefWidth="215.0" text="Seleziona folder di destinazione">
                                        <font>
                                           <Font size="11.0" />
                                        </font></Label>
                                     <Text fx:id="responseSingleCopy" layoutX="25.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="647.7367782592773" />
-                                    <ImageView fitHeight="49.0" fitWidth="53.0" layoutX="719.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="49.0" fitWidth="53.0" layoutX="719.0" layoutY="201.0" onMouseClicked="#startSingleCopy" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@/img/copy-document-start.png" />
                                        </image>
@@ -146,6 +148,7 @@
                               </AnchorPane>
                            </items>
                         </SplitPane>
+                        <CheckBox fx:id="enableLogoDisclaimerMultiple" layoutX="706.0" layoutY="32.0" mnemonicParsing="false" text="Inserisci Logo/Disclaimer" />
                      </children>
                   </AnchorPane>
             </content>
@@ -156,7 +159,7 @@
    <bottom>
       <HBox prefHeight="18.0" prefWidth="870.0" style="-fx-background-color: #ABCDEF;" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ManipulatePDF® -  Created  by VRM Team 02/2022" textAlignment="RIGHT" wrappingWidth="848.5366022586823" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ManipulatePDF® -  Creato da VRM Team - 09/2022" textAlignment="RIGHT" wrappingWidth="848.5366022586823" />
          </children>
       </HBox>
    </bottom>

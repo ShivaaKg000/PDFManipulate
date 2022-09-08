@@ -1,11 +1,11 @@
 package view;
 
 import java.io.File;
-
 import controller.CopyAcrofieldController;
 import controller.DecryptController;
 import controller.NavigationController;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -35,8 +35,13 @@ public class MainView  {
 	@FXML private TextField folderPath;
 	@FXML private TextField toMapPath;
 	@FXML private TextField destPath;
+	
+	@FXML private CheckBox enableLogoDisclaimerSingle = new CheckBox();
+	@FXML private CheckBox enableLogoDisclaimerMultiple = new CheckBox();
 
 	public void initialize() {
+		enableLogoDisclaimerMultiple.setIndeterminate(false);
+		enableLogoDisclaimerSingle.setIndeterminate(false);
 	}
 
 	public void chooseSourceFolder() {
@@ -87,11 +92,11 @@ public class MainView  {
 		Boolean flag2Unlock			= true;
 		
 		if(unLockedPath.getText() == "") {
-			logArea.appendText("Source path is empty, please select a valid path\n");
+			logArea.appendText(Constants.ERRORE_ROOT_ORIGINE_NON_TROVATA);
 			flag2Unlock = false;
 		}
 		if(lockedPath.getText() == "") {
-			logArea.appendText("Destination path is empty, please select a valid path\n");
+			logArea.appendText(Constants.ERRORE_ROOT_DESTINAZIONE_NON_TROVATA);
 			flag2Unlock = false;
 		}
 		if(flag2Unlock == true) {
@@ -100,13 +105,13 @@ public class MainView  {
 	}
 	public void startMultipleCopy() {
 		logAreaMultipleCopy.setText(
-				CopyAcrofieldController.getInstance().MapMultipleDoc(folderPath.getText())
+				CopyAcrofieldController.getInstance().MapMultipleDoc(folderPath.getText(),enableLogoDisclaimerMultiple.isSelected())
 				);
 	}
 
 	public void startSingleCopy() {
 		responseSingleCopy.setText(
-				CopyAcrofieldController.getInstance().MapSingleDoc(toMapPath.getText(), mappedPath.getText(), destPath.getText())
+				CopyAcrofieldController.getInstance().MapSingleDoc(toMapPath.getText(), mappedPath.getText(), destPath.getText(),enableLogoDisclaimerSingle.isSelected())
 				);
 	}
 

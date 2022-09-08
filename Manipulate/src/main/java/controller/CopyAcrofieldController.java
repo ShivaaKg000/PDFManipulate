@@ -2,13 +2,11 @@ package controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
+import java.time.LocalTime;  
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
+import com.itextpdf.text.pdf.PushbuttonField;
 
 import manipulate.Constants;
 
@@ -25,7 +23,7 @@ public class CopyAcrofieldController {
 	private CopyAcrofieldController() {}
 
 
-	public String MapMultipleDoc(String basePath) {
+	public String MapMultipleDoc(String basePath, boolean enableLogoDisclaimer) {
 
 		String log= new String();
 		String codiceProdotto;
@@ -43,7 +41,7 @@ public class CopyAcrofieldController {
 							{
 								for (File file : DIRECTORY_ORIGINI.listFiles()) { // ciclo su tutti i files
 									try {
-										int ris=MapDoc(file,codiceProdotto,nomeRete+"\\",basePath);
+										int ris=MapDoc(file,codiceProdotto,nomeRete+"\\",basePath, enableLogoDisclaimer);
 										if(ris==-1) {
 											log+=LogController.getInstance(basePath).printError(codiceProdotto+file.getName(),Constants.ERRORE_TEMPLATE_NON_TROVATO,basePath);
 										}
@@ -62,7 +60,7 @@ public class CopyAcrofieldController {
 			}
 
 		}else {
-			log+=Constants.ERRORE_ROOT_NON_TROVATA;
+			log+=Constants.ERRORE_ROOT_ORIGINE_NON_TROVATA;
 		}		
 
 		return log;
@@ -72,14 +70,13 @@ public class CopyAcrofieldController {
 
 	
 	
-	public int MapDoc(File file,String codiceProdotto,String rete, String basePath) throws Exception  {
+	public int MapDoc(File file,String codiceProdotto,String rete, String basePath,boolean enableLogoDisclaimer) throws Exception  {
 		if(!file.isDirectory()) {
 			String DOC_NAME=file.getName();
 			String TEMPLATE_FILLATO =  basePath+"\\" +rete+codiceProdotto+ Constants.MAPPED  + DOC_NAME ;/*path Documento fillato da usare come guida*/							
 			String TEMPLATE_DA_DIGITALIZZARE = basePath+"\\" +rete+ codiceProdotto+Constants.TO_MAP + DOC_NAME ;/*path documento vuoto*/
 			String DIRECTORY_FILE_GENERATO =basePath+"\\" +rete+ codiceProdotto;
 			String DOC_GENERATO = basePath+"\\" + rete +codiceProdotto +DOC_NAME ;/*path Documento generato*/	
-
 			File template = new File(TEMPLATE_DA_DIGITALIZZARE);
 			if(template.exists()) {
 				PdfReader pieno;
@@ -93,7 +90,16 @@ public class CopyAcrofieldController {
 				for( int i = 1; i <= pieno.getNumberOfPages(); ++i) {
 					stamper.replacePage( vuoto, i, i );
 				}
+				// inserimento acrofield logo e disclaimer SPI in alto a destra della prima pagina se flag enableLogoDisclaimer è true
+				System.out.println(enableLogoDisclaimer);
+				if(enableLogoDisclaimer) {
+                PushbuttonField logo = new PushbuttonField(stamper.getWriter(), new Rectangle(Constants.LogoLLX,Constants.LogoLLY,Constants.LogoURX,Constants.LogoURY), Constants.LOGO_FIELD);
+                stamper.addAnnotation(logo.getField(), 1);
 
+                PushbuttonField disclaimer = new PushbuttonField(stamper.getWriter(), new Rectangle(Constants.DisclaimerLLX,Constants.DisclaimerLLY,Constants.DisclaimerURX,Constants.DisclaimerURY), Constants.DISCLAIMER_FIELD);
+                stamper.addAnnotation(disclaimer.getField(), 1);
+				}
+				
 				stamper.close();
 				return 1; // DOC GENERATO
 			}
@@ -106,7 +112,7 @@ public class CopyAcrofieldController {
 	}
 
 
-	public String MapSingleDoc(String toMap, String mapped, String destinazione)  {
+	public String MapSingleDoc(String toMap, String mapped, String destinazione, boolean enableLogoDisclaimer)  {
 
 		try {
 			String nameFile = toMap.substring(toMap.lastIndexOf("\\"),toMap.length());
@@ -121,16 +127,25 @@ public class CopyAcrofieldController {
 					stamper.replacePage( vuoto, i, i );
 				}
 
+				// inserimento acrofield logo e disclaimer SPI in alto a destra della prima pagina se flag enableLogoDisclaimer è true
+				if(enableLogoDisclaimer) {
+                PushbuttonField logo = new PushbuttonField(stamper.getWriter(), new Rectangle(333.93f,802.75f,571.84f,831.38f), Constants.LOGO_FIELD);
+                stamper.addAnnotation(logo.getField(), 1);
+
+                PushbuttonField disclaimer = new PushbuttonField(stamper.getWriter(), new Rectangle(19.57f,2.13f,546.35f,15.31f), Constants.DISCLAIMER_FIELD);
+                stamper.addAnnotation(disclaimer.getField(), 1);
+				}
+				
 				stamper.close();
 
-				return "Documento "+  nameFile.substring(1,nameFile.length()) +" copiato, controllare il posizionamento degli Acrofields copiati";
+				return LocalTime.now()+": Documento "+  nameFile.substring(1,nameFile.length()) +" copiato, controllare il posizionamento degli Acrofields copiati";
 			}
-			else  return" ERRORE - I file selezionati non sono dei documenti PDF";
+			else  return LocalTime.now()+": "+Constants.ERRORE_TIPO_FILE;
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			return LocalTime.now()+": "+Constants.ERRORE_FILE_APERTO;
 		} 
-		return"";
 	}
 	
 	
