@@ -2,7 +2,10 @@ package controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.time.LocalTime;  
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
@@ -113,7 +116,8 @@ public class CopyAcrofieldController {
 
 
 	public String MapSingleDoc(String toMap, String mapped, String destinazione, boolean enableLogoDisclaimer)  {
-
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+		LocalDateTime now = LocalDateTime.now();  
 		try {
 			String nameFile = toMap.substring(toMap.lastIndexOf("\\"),toMap.length());
 			File toMapFile = new File(toMap);
@@ -121,7 +125,7 @@ public class CopyAcrofieldController {
 			if(toMapFile.isFile() && mappedFile.isFile()) {  //controlla se sono file
 				PdfReader pieno = new PdfReader( mapped );
 				PdfReader vuoto = new PdfReader( toMap ); 
-				PdfStamper stamper = new PdfStamper( pieno ,  new FileOutputStream(destinazione+nameFile) ); 
+				PdfStamper stamper = new PdfStamper( pieno ,  new FileOutputStream(destinazione+"\\"+LocalTime.now().format(DateTimeFormatter.ofPattern("HHmmss"))+"_"+ nameFile.substring(1,nameFile.length())) ); 
 
 				for( int i = 1; i <= pieno.getNumberOfPages(); ++i) {
 					stamper.replacePage( vuoto, i, i );
@@ -129,22 +133,21 @@ public class CopyAcrofieldController {
 
 				// inserimento acrofield logo e disclaimer SPI in alto a destra della prima pagina se flag enableLogoDisclaimer è true
 				if(enableLogoDisclaimer) {
-                PushbuttonField logo = new PushbuttonField(stamper.getWriter(), new Rectangle(333.93f,802.75f,571.84f,831.38f), Constants.LOGO_FIELD);
+                PushbuttonField logo = new PushbuttonField(stamper.getWriter(), new Rectangle(Constants.LogoLLX,Constants.LogoLLY,Constants.LogoURX,Constants.LogoURY), Constants.LOGO_FIELD);
                 stamper.addAnnotation(logo.getField(), 1);
 
-                PushbuttonField disclaimer = new PushbuttonField(stamper.getWriter(), new Rectangle(19.57f,2.13f,546.35f,15.31f), Constants.DISCLAIMER_FIELD);
+                PushbuttonField disclaimer = new PushbuttonField(stamper.getWriter(), new Rectangle(Constants.DisclaimerLLX,Constants.DisclaimerLLY,Constants.DisclaimerURX,Constants.DisclaimerURY),Constants.DISCLAIMER_FIELD);
                 stamper.addAnnotation(disclaimer.getField(), 1);
 				}
 				
 				stamper.close();
-
-				return LocalTime.now()+": Documento "+  nameFile.substring(1,nameFile.length()) +" copiato, controllare il posizionamento degli Acrofields copiati";
+				return dtf.format(now)+": Documento "+  nameFile.substring(1,nameFile.length()) +" copiato, controllare il posizionamento degli Acrofields copiati";
 			}
-			else  return LocalTime.now()+": "+Constants.ERRORE_TIPO_FILE;
+			else  return dtf.format(now)+": "+Constants.ERRORE_TIPO_FILE;
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return LocalTime.now()+": "+Constants.ERRORE_FILE_APERTO;
+			return dtf.format(now)+": "+Constants.ERRORE_FILE_APERTO;
 		} 
 	}
 	
